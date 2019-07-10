@@ -43,7 +43,7 @@ function hide(){
 //Show Results function 
 function showResults(){
     $('#results').show();
-
+    
 }
 
 //TIMER FUNCTIONS-----------------------------------------
@@ -63,7 +63,7 @@ $('#startBtn').on('click', function(){
 $('#doneBtn').on('click',function(){
     $('#doneBtn').hide();
     hide();
-    showResults();
+    //display results
     
 });
 
