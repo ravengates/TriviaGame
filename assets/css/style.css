@@ -14,7 +14,7 @@ body {
 
 }
 
-#questions {
+.meangirl-ques {
     background-color:pink;
     margin-left: 200px;
     margin-right: 200px;
@@ -23,4 +23,11 @@ body {
 .big-banner{
     color: pink;
     background-image: url(https://i.pinimg.com/originals/c2/80/7d/c2807d5e8383bf778d51b795fba90d26.png);
+}
+
+.results {
+    background-color: hotpink;
+    color: white;
+    font-size: 50px;
+    
 }

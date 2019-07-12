@@ -9,67 +9,110 @@
 //Once Timer is Out OR when done clicked
 //Result Page is shown 
 
-//variables needed------------------------------------
-var seconds = 30;
-var questionsCorrect = 0;
-var questionsWrong = 0;
-var questionsNotAnswered= 0;
-var intervalId;
+
 
 // when the website first opens ////Hide Function
 ////hide timer, question form, and result page
 $(document).ready(function() {
-    $('#questions').hide();
+    $('.meangirl-ques').hide();
     $('#timer').hide();
-    $('#results').hide();
+    $('.results').hide();
+   
+   
+
+    //variables needed------------------------------------
+var seconds = 30;
+var correctQuestions = 0;
+var wrongQuestions = 0;
+var unAnswered= 0;
+var intervalId;
 
 
 //FUNCTIONS-----------------------------------------------
 
 //show functions.
 function unHide(){
-    $('#questions').show();
+    $('.meangirl-ques').show();
     $('#timer').show();
-
-}
- 
-//hide function.
-function hide(){
-    $('#questions').hide();
-    $('#timer').hide();
-       
-}
-
-//Show Results function 
-function showResults(){
-    $('#results').show();
+    $('#doneBtn').show();
     
 }
 
-//TIMER FUNCTIONS-----------------------------------------
+
+function startTimer(){
+intervalId = setInterval(decrement, 1000);
+}
+
+function decrement(){
+    seconds--;
+    $('#timer').html("" +"Time Remaing!" +" "+ seconds + " " + "seconds");
+    if (seconds ===1){
+        $('#timer').html("" +"Time Remaing!" +" "+ seconds + " " + "second");
+    }
+    else if(seconds ===0) {
+        $('#startBtn').hide();
+    hide();
+    allTotals();
+    $('.results').show();
+    }
+}
+
+function clear() {
+    clearInterval(intervalId);
+}
+
+
+ 
+//hide function.
+function hide(){
+    $('.meangirl-ques').hide();
+    $('#timer').hide();
+    $('#doneBtn').hide();
+       
+}
+
+//show totals
+
+
+function allTotals(){
+    $('#results').show();
+    questionsNotAnswered = (4-(correctQuestions+wrongQuestions));
+    $('#questionsCorrect').text("Correct Answers:" + " " + correctQuestions); 
+    $('#questionsWrong').text("Wrong Answers:" + " " + wrongQuestions); 
+    $('#questionsNotAnswered').text("Questions Not Answered:" + " " + unAnswered); 
+}
+
 
 
 //CLICK EVENTS---------------------------------------------
 
-//click start button --
+//click start button -- needs to show questions, start timer, intake answers.
 $('#startBtn').on('click', function(){
     $('#startBtn').hide();
-    unHide();
+    unHide(); 
+    startTimer();
+$('.results').hide();
     
-
 });
 
-//click done button
+//click done button -- needs to hide questions, hide timer, and show results
 $('#doneBtn').on('click',function(){
-    $('#doneBtn').hide();
+       $('#startBtn').hide();
     hide();
-    //display results
-    
+    allTotals();
+    $('.results').show();
+              
 });
 
+/// clicking questions
+
+$('input[type=radio]').on ('change', function(){
+    correctQuestions = $('input[value=correct]:checked').length;
+    wrongQuestions = $('input[value=wrong]:checked').length;
+    unanswered = (8-(correctQuestions+wrongQuestions));
+    });
+
 
 
 
 });
-
-
