@@ -109,7 +109,7 @@ $('#doneBtn').on('click',function(){
 $('input[type=radio]').on ('change', function(){
     correctQuestions = $('input[value=correct]:checked').length;
     wrongQuestions = $('input[value=wrong]:checked').length;
-    unanswered = (8-(correctQuestions+wrongQuestions));
+    unAnswered = (4-(correctQuestions+wrongQuestions));
     });
 
 
